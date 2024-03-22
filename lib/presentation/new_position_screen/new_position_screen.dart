@@ -35,3 +35,5 @@ onTapArrowBack(BuildContext context) { Navigator.pop(context); }
 /// Navigates to the experienceSettingScreen when the action is triggered.
 onTapSaveChangesButton(BuildContext context) { Navigator.pushNamed(context, AppRoutes.experienceSettingScreen); } 
  }
+
+
