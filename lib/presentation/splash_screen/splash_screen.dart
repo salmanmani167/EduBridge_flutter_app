@@ -36,7 +36,7 @@ class SplashScreen extends StatelessWidget {
                     shape: MaterialStateProperty.all(StadiumBorder()),
                   ),
                   child: Text(
-                    "Start Now",
+                    "Start ok",
                     style: TextStyle(
                       color: Colors.blueAccent,
                       fontSize: 30, // Set font size to 16px
