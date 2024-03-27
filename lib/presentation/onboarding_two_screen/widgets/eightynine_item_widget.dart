@@ -2,6 +2,8 @@ import 'package:sulaman_s_application007/widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
 import 'package:sulaman_s_application007/core/app_export.dart';
 
+import '../../onboarding_three_screen/onboarding_three_screen.dart';
+
 // ignore: must_be_immutable
 class EightynineItemWidget extends StatelessWidget {
   EightynineItemWidget({
@@ -59,7 +61,7 @@ class EightynineItemWidget extends StatelessWidget {
             width: 243.h,
             margin: EdgeInsets.symmetric(horizontal: 17.h),
             child: Text(
-              "Semper in cursus magna et eu varius nunc adipiscing. Elementum justo, laoreet id sem . ",
+              "Empower students with FYP app connecting them to industry supervisors, cordiantore, and AI ideas for innovative project collaborations.",
               maxLines: 3,
               overflow: TextOverflow.ellipsis,
               textAlign: TextAlign.center,
@@ -73,7 +75,10 @@ class EightynineItemWidget extends StatelessWidget {
             width: 101.h,
             text: "Next",
             onPressed: () {
-              onTapLabel!.call();
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => OnboardingThreeScreen()),
+              );
             },
           ),
         ],

@@ -2,6 +2,9 @@ import 'package:sulaman_s_application007/widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
 import 'package:sulaman_s_application007/core/app_export.dart';
 
+import '../../onboarding_two_screen/onboarding_two_screen.dart';
+
+
 // ignore: must_be_immutable
 class LabelItemWidget extends StatelessWidget {
   const LabelItemWidget({Key? key})
@@ -41,7 +44,7 @@ class LabelItemWidget extends StatelessWidget {
                     style: CustomTextStyles.headlineSmallff0d0140,
                   ),
                   TextSpan(
-                    text: "Find Your Dream Job",
+                    text: "FYP Students",
                     style: CustomTextStyles.headlineSmallff0d0140,
                   ),
                 ],
@@ -53,7 +56,7 @@ class LabelItemWidget extends StatelessWidget {
           SizedBox(
             width: 243.h,
             child: Text(
-              "Semper in cursus magna et eu varius nunc adipiscing. Elementum justo, laoreet id sem . ",
+              "FYPConnect: Bridging students & industry supervisors. AI-driven matching, and intuitive interface for seamless collaboration. Your FYP companion",
               maxLines: 3,
               overflow: TextOverflow.ellipsis,
               textAlign: TextAlign.center,
@@ -66,7 +69,14 @@ class LabelItemWidget extends StatelessWidget {
           CustomElevatedButton(
             width: 101.h,
             text: "Next",
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => OnboardingTwoScreen()),
+              );
+            },
           ),
+
         ],
       ),
     );
