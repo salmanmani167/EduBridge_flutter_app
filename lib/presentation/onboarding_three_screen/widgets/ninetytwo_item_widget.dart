@@ -1,3 +1,4 @@
+import 'package:sulaman_s_application007/presentation/sign_up_create_acount_screen/sign_up_create_acount_screen.dart';
 import 'package:sulaman_s_application007/widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
 import 'package:sulaman_s_application007/core/app_export.dart';
@@ -38,7 +39,7 @@ class NinetytwoItemWidget extends StatelessWidget {
               text: TextSpan(
                 children: [
                   TextSpan(
-                    text: "Application surely viewed by ",
+                    text: "Project surely viewed by ",
                     style: CustomTextStyles.headlineSmallff0d0140,
                   ),
                   TextSpan(
@@ -54,7 +55,7 @@ class NinetytwoItemWidget extends StatelessWidget {
           SizedBox(
             width: 243.h,
             child: Text(
-              "Semper in cursus magna et eu varius nunc adipiscing. Elementum justo, laoreet id sem . ",
+              "FYP Bridge: Empowering student-supervisor connections in industries with AI-backed project ideas for transformative academic collaborations",
               maxLines: 3,
               overflow: TextOverflow.ellipsis,
               textAlign: TextAlign.center,
@@ -65,8 +66,14 @@ class NinetytwoItemWidget extends StatelessWidget {
           ),
           SizedBox(height: 69.v),
           CustomElevatedButton(
-            width: 156.h,
+            width: 101.h,
             text: "Get Started",
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => SignUpCreateAcountScreen()),
+              );
+            },
           ),
         ],
       ),
