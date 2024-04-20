@@ -29,7 +29,7 @@ class SplashScreen extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 80),
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, AppRoutes.multiStepForm);
+                    Navigator.pushNamed(context, AppRoutes.onboardingOneScreen);
                   },
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(Colors.white),

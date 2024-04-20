@@ -23,8 +23,8 @@ class CustomBottomBarState extends State<CustomBottomBar> {
     BottomMenuModel(
       icon: ImageConstant.imgNavMessage,
       activeIcon: ImageConstant.imgNavMessage,
-      title: "Message",
-      type: BottomBarEnum.Message,
+      title: "FYP Form",
+      type: BottomBarEnum.FYP,
     ),
     BottomMenuModel(
       icon: ImageConstant.imgNavSaved,
@@ -125,7 +125,7 @@ class CustomBottomBarState extends State<CustomBottomBar> {
 
 enum BottomBarEnum {
   Home,
-  Message,
+  FYP,
   Saved,
   Profile,
 }
