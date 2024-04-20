@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sulaman_s_application007/presentation/multi_step_form/multi_step_form.dart';
 import '../presentation/splash_screen/splash_screen.dart';
 import '../presentation/onboarding_one_screen/onboarding_one_screen.dart';
 import '../presentation/onboarding_two_screen/onboarding_two_screen.dart';
@@ -29,6 +30,7 @@ import '../presentation/app_navigation_screen/app_navigation_screen.dart';
 
 class AppRoutes {
   static const String splashScreen = '/splash_screen';
+  static const String multiStepForm = '/multi_step_form';
 
   static const String onboardingOneScreen = '/onboarding_one_screen';
 
@@ -107,6 +109,7 @@ class AppRoutes {
 
   static Map<String, WidgetBuilder> routes = {
     splashScreen: (context) => SplashScreen(),
+    multiStepForm: (context) => MultiStepForm(),
     onboardingOneScreen: (context) => OnboardingOneScreen(),
     onboardingTwoScreen: (context) => OnboardingTwoScreen(),
     onboardingThreeScreen: (context) => OnboardingThreeScreen(),
