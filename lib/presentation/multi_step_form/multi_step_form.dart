@@ -285,7 +285,7 @@ class _MultiStepFormState extends State<MultiStepForm> {
         ),
         TextFormField(
           controller: rollNumberController,
-          decoration: InputDecoration(labelText: 'Roll Number'),
+          decoration: InputDecoration(labelText:'Roll Number'),
         ),
       ],
     );
