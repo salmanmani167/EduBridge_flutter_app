@@ -8,7 +8,7 @@ import 'package:getwidget/components/drawer/gf_drawer.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:sulaman_s_application007/Views/Homepage/Dashboard.dart';
-import 'package:sulaman_s_application007/Views/Profile/fyp_funding_form.dart';
+import 'package:sulaman_s_application007/Views/Profile/fyp_form.dart';
 import 'package:sulaman_s_application007/Views/Widgets/Homepage/drawer_list_tile.dart';
 
 class HomePage extends StatefulWidget {
@@ -43,9 +43,9 @@ class _HomePageState extends State<HomePage> {
         );
       },
       children: [
-       FypFundingForm(),
+       FypForm(),
         DashBoard(),
-        FypFundingForm(),
+       Container(color: Colors.black,)
       ],
     );
   }

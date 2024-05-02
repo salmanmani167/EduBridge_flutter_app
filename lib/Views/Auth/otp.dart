@@ -6,7 +6,7 @@ import 'package:page_transition/page_transition.dart';
 import 'package:rounded_loading_button_plus/rounded_loading_button.dart';
 //import 'package:rounded_loading_button/rounded_loading_button.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
-import 'package:sulaman_s_application007/Views/Profile/fyp_funding_form.dart';
+import 'package:sulaman_s_application007/Views/Profile/fyp_form.dart';
 import 'package:sulaman_s_application007/Views/Widgets/Auth/auth_heading.dart';
 import 'package:sulaman_s_application007/Views/Widgets/Auth/auth_text_field.dart';
 
@@ -72,7 +72,7 @@ class OTP extends StatelessWidget {
                           context,
                           PageTransition(
                               type: PageTransitionType.fade,
-                              child: FypFundingForm()));
+                              child: FypForm()));
                     });
                   },
                   child: Text(

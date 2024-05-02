@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class ProfileSettingHeading extends StatelessWidget {
+class FormHeading extends StatelessWidget {
   final String heading;
-  ProfileSettingHeading({required this.heading});
+  FormHeading({required this.heading});
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 50),
+      padding: EdgeInsets.symmetric(horizontal: 20),
       alignment: Alignment.center,
       child: Text(
         heading,
@@ -15,7 +15,7 @@ class ProfileSettingHeading extends StatelessWidget {
         textAlign: TextAlign.left,
         style: GoogleFonts.nunito(
             color: Colors.indigo[900],
-            fontSize: 16,
+            fontSize: 20,
             fontWeight: FontWeight.bold),
       ),
     );
