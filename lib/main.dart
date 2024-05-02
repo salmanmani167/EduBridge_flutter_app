@@ -1,33 +1,26 @@
+// ignore_for_file: unused_import
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/scheduler.dart';
-import 'core/app_export.dart';
-
-var globalMessengerKey = GlobalKey<ScaffoldMessengerState>();
+import 'package:flutter_sizer/flutter_sizer.dart';
+import 'package:sulaman_s_application007/Views/Auth/Login.dart';
+import 'package:sulaman_s_application007/Views/Auth/otp.dart';
+import 'package:sulaman_s_application007/Views/Homepage/home_page.dart';
+import 'package:sulaman_s_application007/Views/Profile/fyp_funding_form.dart';
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-  ]);
-
-  ///Please update theme as per your need if required.
-  ThemeHelper().changeTheme('primary');
-  runApp(MyApp());
+  runApp(EduBridge());
 }
 
-class MyApp extends StatelessWidget {
+class EduBridge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Sizer(
-      builder: (context, orientation, deviceType) {
-        return MaterialApp(
-          theme: theme,
-          title: 'sulaman_s_application007',
-          debugShowCheckedModeBanner: false,
-          initialRoute: AppRoutes.splashScreen,
-          routes: AppRoutes.routes,
-        );
-      },
-    );
+          return FlutterSizer(
+            builder: (context, orientation, screenType) {
+            return MaterialApp(
+              title: 'Education Bridge',
+              home: FypFundingForm(),
+              debugShowCheckedModeBanner: false,
+            );
+            }
+          );
   }
 }
+ 

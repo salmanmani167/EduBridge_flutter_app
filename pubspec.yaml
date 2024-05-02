@@ -13,6 +13,14 @@ dependencies:
   smooth_page_indicator: ^1.1.0
   dotted_border: ^2.1.0
   intl: ^0.18.0
+  page_transition: ^2.1.0
+  google_fonts: ^6.2.1
+  flutter_sizer: ^1.0.5
+  rounded_loading_button_plus: ^3.0.1
+  circular_profile_avatar: ^2.0.5
+  font_awesome_flutter: ^10.7.0
+  getwidget: ^4.0.0
+  animated_bottom_navigation_bar: ^1.3.3
 dev_dependencies: 
   flutter_test: 
     sdk: flutter
@@ -21,14 +29,32 @@ flutter:
   assets: 
     - assets/
     - assets/images/
-  fonts: 
-    - family: Plus Jakarta Sans
-      fonts: 
-        - asset: assets/fonts/PlusJakartaSansBold.ttf
-          weight: 700
-        - asset: assets/fonts/PlusJakartaSansSemiBold.ttf
-          weight: 600
-        - asset: assets/fonts/PlusJakartaSansMedium.ttf
-          weight: 500
-        - asset: assets/fonts/PlusJakartaSansRegular.ttf
-          weight: 400
+    - assets/images/logo.png
+    - assets/images/1.jpg
+    - assets/images/2.png
+    - assets/images/fixer.jpg
+    - assets/images/find.jpg
+    - assets/dashboard/m.jpg
+    - assets/dashboard/t.png
+    - assets/dashboard/chat.png
+    - assets/dashboard/message.png
+    - assets/dashboard/chatting.png
+    - assets/dashboard/blackgallery.png
+    - assets/dashboard/coloredgallery.png
+    - assets/dashboard/blacksmile.png
+    - assets/dashboard/coloredsmile.png
+    - assets/dashboard/phone (1).png
+    - assets/dashboard/phone.png
+    - assets/dashboard/smartphone.png
+    - assets/dashboard/mobile.png
+    - assets/dashboard/placeholder.png
+    - assets/dashboard/location.png
+    - assets/dashboard/fast-forward.png
+    - assets/dashboard/foward.png
+    - assets/dashboard/horoscope.png
+    - assets/dashboard/todolist.png
+    - assets/dashboard/notes.png
+    - assets/dashboard/diary.png
+    - assets/dashboard/sos.png
+    - assets/dashboard/activity.png
+  
