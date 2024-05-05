@@ -4,7 +4,7 @@ import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:sulaman_s_application007/Views/Auth/Login.dart';
 import 'package:sulaman_s_application007/Views/Auth/otp.dart';
 import 'package:sulaman_s_application007/Views/Homepage/home_page.dart';
-import 'package:sulaman_s_application007/Views/Profile/fyp_form.dart';
+import 'package:sulaman_s_application007/Views/Form/fyp_form.dart';
 void main() {
   runApp(EduBridge());
 }
@@ -16,7 +16,7 @@ class EduBridge extends StatelessWidget {
             builder: (context, orientation, screenType) {
             return MaterialApp(
               title: 'Education Bridge',
-              home: FypForm(),
+              home: logIn(),
               debugShowCheckedModeBanner: false,
             );
             }

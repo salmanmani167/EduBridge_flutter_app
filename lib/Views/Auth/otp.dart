@@ -6,7 +6,7 @@ import 'package:page_transition/page_transition.dart';
 import 'package:rounded_loading_button_plus/rounded_loading_button.dart';
 //import 'package:rounded_loading_button/rounded_loading_button.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
-import 'package:sulaman_s_application007/Views/Profile/fyp_form.dart';
+import 'package:sulaman_s_application007/Views/Form/fyp_form.dart';
 import 'package:sulaman_s_application007/Views/Widgets/Auth/auth_heading.dart';
 import 'package:sulaman_s_application007/Views/Widgets/Auth/auth_text_field.dart';
 
@@ -34,8 +34,8 @@ class OTP extends StatelessWidget {
               ),
               AuthHeading(
                 fontSize: 13.sp,
-                logo: "assets/images/1.jpg",
-                logoSize: 80.sp,
+                logo: "assets/images/edulogo.png",
+                logoSize: 200,
                 mainText: " Enter OTP",
                 subText:
                     "please enter the OTP that you \n have recieved on your Email",
@@ -52,13 +52,6 @@ class OTP extends StatelessWidget {
                   iconsize: 12.sp,
                   labelSize: 12.sp),
                   const SizedBox(
-                height: 30,
-              ),
-                  Text("to request for a new password,type your email address and the passsword will be sent to that mail",
-                      style: GoogleFonts.poppins(
-                          fontSize: 10.sp, color: Colors.black87,),
-                          textAlign:TextAlign.center ,),
-                          const SizedBox(
                 height: 30,
               ),
                 Hero(

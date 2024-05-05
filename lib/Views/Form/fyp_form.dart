@@ -6,6 +6,8 @@ import "package:google_fonts/google_fonts.dart";
 import 'package:getwidget/getwidget.dart';
 import "package:page_transition/page_transition.dart";
 import "package:rounded_loading_button_plus/rounded_loading_button.dart";
+import "package:sulaman_s_application007/Views/Homepage/Dashboard.dart";
+import "package:sulaman_s_application007/Views/Homepage/home_page.dart";
 import "package:sulaman_s_application007/Views/Widgets/FYP%20Form/fyp%20_form_field.dart";
 import "package:sulaman_s_application007/Views/Widgets/FYP%20Form/form_heading.dart";
 import "package:sulaman_s_application007/Views/Widgets/FYP%20Form/form_sub_heading.dart";
@@ -48,30 +50,31 @@ class _FypFundingFormState extends State<FypForm> {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20.0),
                 child: Column(
+                  
                   children: [
                     const SizedBox(
-                      height: 20,
+                      height: 80,
                     ),
-                    Row(
-                      children: [
-                        Icon(
-                          Icons.view_list_sharp,
-                          color: Colors.white,
-                          size: 23,
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Text(
-                          "FYP Form",
-                          textAlign: TextAlign.left,
-                          style: GoogleFonts.poppins(
-                              color: Colors.white,
-                              fontSize: 23,
-                              fontWeight: FontWeight.bold),
-                        )
-                      ],
-                    ),
+                    // Row(
+                    //   children: [
+                    //     Icon(
+                    //       Icons.view_list_sharp,
+                    //       color: Colors.white,
+                    //       size: 23,
+                    //     ),
+                    //     const SizedBox(
+                    //       width: 10,
+                    //     ),
+                    //     Text(
+                    //       "FYP Form",
+                    //       textAlign: TextAlign.left,
+                    //       style: GoogleFonts.poppins(
+                    //           color: Colors.white,
+                    //           fontSize: 23,
+                    //           fontWeight: FontWeight.bold),
+                    //     )
+                    //   ],
+                    // ),
                     const SizedBox(
                       height: 20,
                     ),
@@ -84,10 +87,31 @@ class _FypFundingFormState extends State<FypForm> {
                       child: Container(
                         child: Column(
                           children: [
-                            const SizedBox(
-                              height: 20,
+                            Container(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 20, vertical: 10),
+                              child: Row(
+                                children: [
+                                  Icon(Icons.list ,size: 30,),
+                                  Text(
+                                    "FYP Form",
+                                    textAlign: TextAlign.left,
+                                    
+                                    style: GoogleFonts.nunito(
+                                        color: Colors.black,
+                                        fontSize: 20,
+                                        letterSpacing: 2,
+                                        fontWeight: FontWeight.w900,
+                                      
+                                    ),
+                                  )
+                                ],
+                              ),
                             ),
-                            FormHeading(heading: "Student Details"),
+                            Divider(
+                              color: Colors.grey,
+                            ),
+                            FormHeading(heading: "Team Lead"),
 
                             FormSubHeading(subheading: "First Name"),
                             FypFormField(
@@ -152,6 +176,75 @@ class _FypFundingFormState extends State<FypForm> {
                                 obscureText: false,
                                 fontSize: 12,
                                 PlaceholderTextSize: 12),
+                                SizedBox(height: 20,),
+                                FormHeading(heading: "Project Partner's Detais"),
+
+                            FormSubHeading(subheading: "First Name"),
+                            FypFormField(
+                              keyboardType: TextInputType.name,
+                              obscureText: false,
+                              fontSize: 12,
+                              PlaceholderText: "Enter your Partner's first name",
+                              PlaceholderTextSize: 12,
+                            ),
+                            FormSubHeading(subheading: "Last Name"),
+                            FypFormField(
+                              keyboardType: TextInputType.name,
+                              obscureText: false,
+                              fontSize: 12,
+                              PlaceholderText: "Enter your partner's last name",
+                              PlaceholderTextSize: 12,
+                            ),
+                            // it's a dropdown
+                            FormSubHeading(
+                              subheading: "Department",
+                            ),
+                            FypFormField(
+                                keyboardType: TextInputType.none,
+                                PlaceholderText: "Select Department",
+                                obscureText: false,
+                                fontSize: 12,
+                                PlaceholderTextSize: 12),
+                            FormSubHeading(
+                              subheading: "Email ID",
+                            ),
+                            FypFormField(
+                                keyboardType: TextInputType.emailAddress,
+                                PlaceholderText: "Enter your partner's student mail ID",
+                                obscureText: false,
+                                fontSize: 12,
+                                PlaceholderTextSize: 12),
+                            FormSubHeading(
+                              subheading: "Personal Email ID",
+                            ),
+                            FypFormField(
+                                keyboardType: TextInputType.emailAddress,
+                                PlaceholderText: "Enter your partner's mail ID",
+                                obscureText: false,
+                                fontSize: 12,
+                                PlaceholderTextSize: 12),
+                            //it's a dropdown
+                            FormSubHeading(
+                              subheading: "Session",
+                            ),
+                            FypFormField(
+                                keyboardType: TextInputType.none,
+                                PlaceholderText: "Select Session",
+                                obscureText: false,
+                                fontSize: 12,
+                                PlaceholderTextSize: 12),
+                                 FormSubHeading(
+                              subheading: "Student ID",
+                            ),
+                            FypFormField(
+                                keyboardType: TextInputType.none,
+                                PlaceholderText: "Pleas enter you Patt ID",
+                                obscureText: false,
+                                fontSize: 12,
+                                PlaceholderTextSize: 12),
+
+                                SizedBox(height: 30,),
+                                FormHeading(heading: "FYP Details"),
                                  FormSubHeading(
                               subheading: "Project ID",
                             ),
@@ -183,7 +276,7 @@ class _FypFundingFormState extends State<FypForm> {
                                         context,
                                         PageTransition(
                                             type: PageTransitionType.fade,
-                                            child: FypForm()));
+                                            child: HomePage()));
                                   });
                                 },
                                 child: Text(

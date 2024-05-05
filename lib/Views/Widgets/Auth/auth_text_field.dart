@@ -34,7 +34,7 @@ class AuthTextField extends StatelessWidget {
             icon,
             size: iconsize,
           ),
-          prefixIconColor: Color.fromRGBO(230, 81, 0, 1),
+          prefixIconColor: Colors.indigo[900],
           label: Text(
             labelText,
           ),

@@ -5,7 +5,6 @@ import 'package:page_transition/page_transition.dart';
 import 'package:rounded_loading_button_plus/rounded_loading_button.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:sulaman_s_application007/Views/Auth/otp.dart';
-import 'package:sulaman_s_application007/Views/Profile/profile_setup.dart';
 import 'package:sulaman_s_application007/Views/Widgets/Auth/auth_heading.dart';
 import '../Widgets/Auth/auth_text_field.dart';
 
@@ -32,8 +31,8 @@ class logIn extends StatelessWidget {
               new AuthHeading(
                 mainText: "Sign in to Edu Bridge",
                 subText: "your own FYP partner",
-                logo: "assets/images/logo.png",
-                logoSize: 52.sp,
+                logo: "assets/images/edulogo.png",
+                logoSize: 200,
                 fontSize: 15.sp,
               ),
               const SizedBox(
@@ -45,7 +44,7 @@ class logIn extends StatelessWidget {
                   labelText: "abc@gmail.com",
                   obscureText: false,
                   fontSize: 16.sp,
-                  iconsize: 16.sp,
+                  iconsize: 16,
                   labelSize: 16.sp),
               const SizedBox(height: 15),
               Hero(
@@ -74,47 +73,7 @@ class logIn extends StatelessWidget {
                   borderRadius: 10,
                 ),
               ),
-              const SizedBox(height: 15),
-              // Container(
-              //     alignment: Alignment.centerLeft,
-              //     child: GestureDetector(
-              //       onTap: () {
-              //         Navigator.push(
-              //             context,
-              //             PageTransition(
-              //                 type: PageTransitionType.fade,
-              //                 child: OTP()));
-              //       },
-              //       child: Text(
-              //         "Forget Password?",
-              //         style: GoogleFonts.poppins(
-              //             fontSize: 12, color: Colors.red[700]),
-              //       ),
-              //     ),
-              //     ),
-              const SizedBox(height: 25),
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.center,
-              //   children: [
-              //     Text("don't have an account?",
-              //         style: GoogleFonts.poppins(
-              //             fontSize: 12, color: Colors.black87)),
-              //     // GestureDetector(
-              //     //   onTap: () {
-              //     //     Navigator.pushReplacement(
-              //     //         context,
-              //     //         PageTransition(
-              //     //             type: PageTransitionType.fade,
-              //     //             child: ProfileSetup()));
-              //     //   },
-              //     //   child: Text("Sign up",
-              //     //       style: GoogleFonts.poppins(
-              //     //           fontWeight: FontWeight.bold,
-              //     //           fontSize: 13.sp,
-              //     //           color: Colors.lightBlueAccent[700])),
-              //     // ),
-              //   ],
-              // )
+              
             ],
           ),
         ),
