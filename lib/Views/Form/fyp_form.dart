@@ -8,6 +8,7 @@ import "package:page_transition/page_transition.dart";
 import "package:rounded_loading_button_plus/rounded_loading_button.dart";
 import "package:sulaman_s_application007/Views/Homepage/Dashboard.dart";
 import "package:sulaman_s_application007/Views/Homepage/home_page.dart";
+import "package:sulaman_s_application007/Views/Widgets/FYP%20Form/drop_down.dart";
 import "package:sulaman_s_application007/Views/Widgets/FYP%20Form/fyp%20_form_field.dart";
 import "package:sulaman_s_application007/Views/Widgets/FYP%20Form/form_heading.dart";
 import "package:sulaman_s_application007/Views/Widgets/FYP%20Form/form_sub_heading.dart";
@@ -20,14 +21,9 @@ class FypForm extends StatefulWidget {
 class _FypFundingFormState extends State<FypForm> {
   final RoundedLoadingButtonController _SaveProfilebtnController =
       RoundedLoadingButtonController();
-  String _dropdownvalue = '1';
-  var items = [
-    'ALi',
-    'Nashit',
-    'Arsal',
-    'Zain',
-  ];
-
+  String _selectedSession = '';
+ String _selectedDepartment = '';
+ String _selectedSupervisor = '';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,31 +46,10 @@ class _FypFundingFormState extends State<FypForm> {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20.0),
                 child: Column(
-                  
                   children: [
                     const SizedBox(
                       height: 80,
                     ),
-                    // Row(
-                    //   children: [
-                    //     Icon(
-                    //       Icons.view_list_sharp,
-                    //       color: Colors.white,
-                    //       size: 23,
-                    //     ),
-                    //     const SizedBox(
-                    //       width: 10,
-                    //     ),
-                    //     Text(
-                    //       "FYP Form",
-                    //       textAlign: TextAlign.left,
-                    //       style: GoogleFonts.poppins(
-                    //           color: Colors.white,
-                    //           fontSize: 23,
-                    //           fontWeight: FontWeight.bold),
-                    //     )
-                    //   ],
-                    // ),
                     const SizedBox(
                       height: 20,
                     ),
@@ -92,17 +67,18 @@ class _FypFundingFormState extends State<FypForm> {
                                   horizontal: 20, vertical: 10),
                               child: Row(
                                 children: [
-                                  Icon(Icons.list ,size: 30,),
+                                  Icon(
+                                    Icons.list,
+                                    size: 30,
+                                  ),
                                   Text(
                                     "FYP Form",
                                     textAlign: TextAlign.left,
-                                    
                                     style: GoogleFonts.nunito(
-                                        color: Colors.black,
-                                        fontSize: 20,
-                                        letterSpacing: 2,
-                                        fontWeight: FontWeight.w900,
-                                      
+                                      color: Colors.black,
+                                      fontSize: 20,
+                                      letterSpacing: 2,
+                                      fontWeight: FontWeight.w900,
                                     ),
                                   )
                                 ],
@@ -133,12 +109,17 @@ class _FypFundingFormState extends State<FypForm> {
                             FormSubHeading(
                               subheading: "Department",
                             ),
-                            FypFormField(
-                                keyboardType: TextInputType.none,
-                                PlaceholderText: "Select Department",
-                                obscureText: false,
-                                fontSize: 12,
-                                PlaceholderTextSize: 12),
+                             ReusableDropDown(
+                              items: ["Computer Science", "Physics", "Chemistry","Maths"],
+                              value: _selectedDepartment,
+                              onChanged: (newValue) {
+                                setState(() {
+                                  _selectedDepartment =
+                                      newValue!; // Update the selected option
+                                });
+                              },
+                            ),
+                    
                             FormSubHeading(
                               subheading: "Email ID",
                             ),
@@ -161,13 +142,17 @@ class _FypFundingFormState extends State<FypForm> {
                             FormSubHeading(
                               subheading: "Session",
                             ),
-                            FypFormField(
-                                keyboardType: TextInputType.none,
-                                PlaceholderText: "Select Session",
-                                obscureText: false,
-                                fontSize: 12,
-                                PlaceholderTextSize: 12),
-                                 FormSubHeading(
+                            ReusableDropDown(
+                              items: ["a", "b", "c"],
+                              value: _selectedSession,
+                              onChanged: (newValue) {
+                                setState(() {
+                                  _selectedSession =
+                                      newValue!; // Update the selected option
+                                });
+                              },
+                            ),
+                            FormSubHeading(
                               subheading: "Student ID",
                             ),
                             FypFormField(
@@ -176,15 +161,18 @@ class _FypFundingFormState extends State<FypForm> {
                                 obscureText: false,
                                 fontSize: 12,
                                 PlaceholderTextSize: 12),
-                                SizedBox(height: 20,),
-                                FormHeading(heading: "Project Partner's Detais"),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            FormHeading(heading: "Project Partner's Detais"),
 
                             FormSubHeading(subheading: "First Name"),
                             FypFormField(
                               keyboardType: TextInputType.name,
                               obscureText: false,
                               fontSize: 12,
-                              PlaceholderText: "Enter your Partner's first name",
+                              PlaceholderText:
+                                  "Enter your Partner's first name",
                               PlaceholderTextSize: 12,
                             ),
                             FormSubHeading(subheading: "Last Name"),
@@ -199,18 +187,24 @@ class _FypFundingFormState extends State<FypForm> {
                             FormSubHeading(
                               subheading: "Department",
                             ),
-                            FypFormField(
-                                keyboardType: TextInputType.none,
-                                PlaceholderText: "Select Department",
-                                obscureText: false,
-                                fontSize: 12,
-                                PlaceholderTextSize: 12),
+                             ReusableDropDown(
+                              items: ["Computer Science", "Physics", "Chemistry","Maths"],
+                              value: _selectedDepartment,
+                              onChanged: (newValue) {
+                                setState(() {
+                                  _selectedDepartment =
+                                      newValue!; // Update the selected option
+                                });
+                              },
+                            ),
+                            
                             FormSubHeading(
                               subheading: "Email ID",
                             ),
                             FypFormField(
                                 keyboardType: TextInputType.emailAddress,
-                                PlaceholderText: "Enter your partner's student mail ID",
+                                PlaceholderText:
+                                    "Enter your partner's student mail ID",
                                 obscureText: false,
                                 fontSize: 12,
                                 PlaceholderTextSize: 12),
@@ -227,13 +221,18 @@ class _FypFundingFormState extends State<FypForm> {
                             FormSubHeading(
                               subheading: "Session",
                             ),
-                            FypFormField(
-                                keyboardType: TextInputType.none,
-                                PlaceholderText: "Select Session",
-                                obscureText: false,
-                                fontSize: 12,
-                                PlaceholderTextSize: 12),
-                                 FormSubHeading(
+                            ReusableDropDown(
+                              items: ["a", "b", "c"],
+                              value: _selectedSession,
+                              onChanged: (newValue) {
+                                setState(() {
+                                  _selectedSession =
+                                      newValue!; // Update the selected option
+                                });
+                              },
+                            ),
+
+                            FormSubHeading(
                               subheading: "Student ID",
                             ),
                             FypFormField(
@@ -243,9 +242,11 @@ class _FypFundingFormState extends State<FypForm> {
                                 fontSize: 12,
                                 PlaceholderTextSize: 12),
 
-                                SizedBox(height: 30,),
-                                FormHeading(heading: "FYP Details"),
-                                 FormSubHeading(
+                            SizedBox(
+                              height: 30,
+                            ),
+                            FormHeading(heading: "FYP Details"),
+                            FormSubHeading(
                               subheading: "Project ID",
                             ),
                             FypFormField(
@@ -254,16 +255,22 @@ class _FypFundingFormState extends State<FypForm> {
                                 obscureText: false,
                                 fontSize: 12,
                                 PlaceholderTextSize: 12),
-                                 FormSubHeading(
+                            FormSubHeading(
                               subheading: "Supervisor",
                             ),
-                            FypFormField(
-                                keyboardType: TextInputType.none,
-                                PlaceholderText: "Pleas select your Supervisor",
-                                obscureText: false,
-                                fontSize: 12,
-                                PlaceholderTextSize: 12),
-                               SizedBox(height: 30,),
+                            ReusableDropDown(
+                              items: ["Dr. Usman Aftab", "Dr. Usman Mughal", "Dr Ali"],
+                              value: _selectedSupervisor,
+                              onChanged: (newValue) {
+                                setState(() {
+                                  _selectedSupervisor =
+                                      newValue!; // Update the selected option
+                                });
+                              },
+                            ),
+                            SizedBox(
+                              height: 30,
+                            ),
                             //button detials
                             Hero(
                               tag: "Auth",
@@ -309,28 +316,4 @@ class _FypFundingFormState extends State<FypForm> {
 
 
 
- // Padding(
-                            //   padding: const EdgeInsets.only(left: 20.0),
-                            //   child: Container(
-                            //     width: 180,
-                            //     height: 50,
-                            //     decoration: BoxDecoration(
-                            //       color: Colors.grey[300],
-                            //       borderRadius: BorderRadius.circular(10),
-                            //     ),
-                            //     child: Center(
-                            //       child: DropdownButton(
-                            //           items: items.map((String items) {
-                            //             return DropdownMenuItem(
-                            //                 value: items, child: Text(items));
-                            //           }).toList(),
-                            //           onChanged: (String? newvalue) {
-                            //             setState(() {
-                            //               _dropdownvalue = newvalue!;
-                            //             });
-                            //             value:
-                            //             _dropdownvalue;
-                            //           }),
-                            //     ),
-                            //   ),
-                            // ),
+ //
