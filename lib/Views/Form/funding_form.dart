@@ -257,7 +257,7 @@ class _FypFundingFormState extends State<FundingForm> {
                               items: [
                                 "Muhammad Ali",
                                 "Arsal",
-                                "Muhammad Awais"
+                                "Muhammad Awais",
                                 "Muhammad Sulaman"
                               ],
                               value: _SelectedDonor,

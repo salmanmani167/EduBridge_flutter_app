@@ -24,8 +24,8 @@ class _HomePageState extends State<HomePage> {
 
   List<IconData> iconslist = [
     FontAwesomeIcons.circleUser,
-    FontAwesomeIcons.dashcube,
-    FontAwesomeIcons.forumbee
+    FontAwesomeIcons.windows,
+    FontAwesomeIcons.moneyBill
   ];
 
   int page = 1;
