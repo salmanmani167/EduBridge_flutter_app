@@ -274,29 +274,35 @@ class _FypFundingFormState extends State<FypForm> {
                             //button detials
                             Hero(
                               tag: "Auth",
-                              child: RoundedLoadingButton(
-                                controller: _SaveProfilebtnController,
-                                onPressed: () {
-                                  Timer(Duration(seconds: 3), () {
-                                    _SaveProfilebtnController.success();
-                                    Navigator.push(
-                                        context,
-                                        PageTransition(
-                                            type: PageTransitionType.fade,
-                                            child: HomePage()));
-                                  });
-                                },
-                                child: Text(
-                                  "Save Form",
-                                  style: GoogleFonts.poppins(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white),
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                                child: RoundedLoadingButton(
+                                  controller: _SaveProfilebtnController,
+                                  onPressed: () {
+                                    Timer(Duration(seconds: 3), () {
+                                      _SaveProfilebtnController.success();
+                                      Navigator.push(
+                                          context,
+                                          PageTransition(
+                                              type: PageTransitionType.fade,
+                                              child: HomePage()));
+                                    });
+                                  },
+                                  child: Text(
+                                    "Save Form",
+                                    style: GoogleFonts.poppins(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white),
+                                  ),
+                                  color: Colors.indigo[900],
+                                  width: 2000.w,
+                                  borderRadius: 10,
                                 ),
-                                color: Colors.indigo[900],
-                                width: 2000.w,
-                                borderRadius: 10,
                               ),
+                            ),
+                             SizedBox(
+                              height: 20,
                             ),
                           ],
                         ),
@@ -312,8 +318,3 @@ class _FypFundingFormState extends State<FypForm> {
     );
   }
 }
-
-
-
-
- //

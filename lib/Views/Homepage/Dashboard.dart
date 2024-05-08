@@ -15,30 +15,22 @@ class DashBoard extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
+          const SizedBox(
+            height: 50,
+          ),
           Container(
             alignment: Alignment.center,
-            child: Text(
+            child: 
+            Text(
               "Dashboard",
-              style: GoogleFonts.bodoniModa(
-                  color: Colors.orange[900],
+              style: GoogleFonts.nunito(
+                  color: Colors.indigo[900],
                   fontWeight: FontWeight.bold,
                   fontSize: 30),
             ),
           ),
           const SizedBox(
-            height: 10,
-          ),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 15),
-            alignment: Alignment.centerLeft,
-            child: Text(
-              "Hired Fixians",
-              style: GoogleFonts.nunito(
-                  color: Colors.black,
-                  fontSize: 20,
-                  fontWeight: FontWeight.w900,
-                  letterSpacing: 1),
-            ),
+            height: 20,
           ),
           Container(
             padding: EdgeInsets.all(25),
@@ -100,7 +92,7 @@ class DashBoard extends StatelessWidget {
                                     width: 14,
                                   ),
                                   Text(
-                                    "Kashaf ud duja",
+                                    "Sulaman Hassan",
                                     style: GoogleFonts.poppins(
                                         fontSize: 14,
                                         fontWeight: FontWeight.w800),
@@ -123,7 +115,7 @@ class DashBoard extends StatelessWidget {
                                   ),
                                   Expanded(
                                     child: Text(
-                                      "Crescent textile mills faisalabad,HOUSE#SA 2 near gourmet bakery",
+                                      "ABC Road, main bullevard, near hardess, Faisalabad",
                                       style: GoogleFonts.poppins(
                                           fontSize: 10,
                                           fontWeight: FontWeight.normal),

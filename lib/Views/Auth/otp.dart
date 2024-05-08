@@ -26,7 +26,7 @@ class OTP extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Container(
-          padding: const EdgeInsets.all(30),
+          padding: const EdgeInsets.symmetric(horizontal: 30),
           child: Column(
             children: [
               const SizedBox(
