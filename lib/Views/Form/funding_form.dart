@@ -171,8 +171,8 @@ class _FypFundingFormState extends State<FundingForm> {
                               items: [
                                 "Muhammad Ali",
                                 "Arsal",
-                                "Muhammad Awais"
-                                    "Muhammad Sulaman"
+                                "Muhammad Awais",
+                                "Muhammad Sulaman"
                               ],
                               value: _SelectedStudent,
                               onChanged: (newValue) {
@@ -249,38 +249,7 @@ class _FypFundingFormState extends State<FundingForm> {
                             SizedBox(
                               height: 30,
                             ),
-                            FormHeading(heading: "Donor Details"),
-                            FormSubHeading(
-                              subheading: "Select Donor",
-                            ),
-                            ReusableDropDown(
-                              items: [
-                                "Muhammad Ali",
-                                "Arsal",
-                                "Muhammad Awais",
-                                "Muhammad Sulaman"
-                              ],
-                              value: _SelectedDonor,
-                              onChanged: (newValue) {
-                                setState(() {
-                                  _SelectedDonor =
-                                      newValue!; // Update the selected option
-                                });
-                              },
-                            ),
-                            FormSubHeading(
-                              subheading: "Enter Amount",
-                            ),
-                            FypFormField(
-                                keyboardType: TextInputType.number,
-                                PlaceholderText: "Enter your Required Amount",
-                                obscureText: false,
-                                fontSize: 12,
-                                PlaceholderTextSize: 12),
-
-                            SizedBox(
-                              height: 30,
-                            ),
+                            
                             //button detials
                             Hero(
                               tag: "Auth",
