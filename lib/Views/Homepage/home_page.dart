@@ -10,6 +10,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:sulaman_s_application007/Views/Form/funding_form.dart';
 import 'package:sulaman_s_application007/Views/Homepage/Dashboard.dart';
 import 'package:sulaman_s_application007/Views/Form/fyp_form.dart';
+import 'package:sulaman_s_application007/Views/Homepage/chat_page.dart';
 import 'package:sulaman_s_application007/Views/Widgets/Homepage/drawer_list_tile.dart';
 
 class HomePage extends StatefulWidget {
@@ -69,9 +70,17 @@ class _HomePageState extends State<HomePage> {
             padding: EdgeInsets.symmetric(
               horizontal: 10,
             ),
-            child: Image.asset(
-              "assets/dashboard/chatting.png",
-              color: Colors.white,
+            child: GestureDetector(
+              onTap: (){
+                Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ChatPage()),
+              );
+              },
+              child: Image.asset(
+                "assets/dashboard/chatting.png",
+                color: Colors.white,
+              ),
             ),
           ),
         ],
