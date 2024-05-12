@@ -38,7 +38,10 @@ List<types.Message> _messages = [];
           ),
         ],
       ),
-      body: Chat(messages: _messages ,user: _user, onSendPressed: _handleSendPressed),
+      body: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Chat(messages: _messages ,user: _user, onSendPressed: _handleSendPressed),
+      ),
     );
   }
   void _handleSendPressed(types.PartialText message) {

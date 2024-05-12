@@ -23,7 +23,7 @@ class EduBridge extends StatelessWidget {
               debugShowCheckedModeBanner: false,
             );
             }
-          );
+          ); 
   }
 }
  
