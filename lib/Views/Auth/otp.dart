@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:provider/provider.dart';
 import 'package:rounded_loading_button_plus/rounded_loading_button.dart';
 //import 'package:rounded_loading_button/rounded_loading_button.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
@@ -10,11 +11,15 @@ import 'package:sulaman_s_application007/Views/Form/fyp_form.dart';
 import 'package:sulaman_s_application007/Views/Widgets/Auth/auth_heading.dart';
 import 'package:sulaman_s_application007/Views/Widgets/Auth/auth_text_field.dart';
 
+import '../../Providers/AuthProvider.dart';
+
 class OTP extends StatelessWidget {
   final RoundedLoadingButtonController _forgetpasswordbtnController =
-      RoundedLoadingButtonController();
+  RoundedLoadingButtonController();
+  final TextEditingController otp = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<AuthService>(context,listen: false);
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -38,12 +43,13 @@ class OTP extends StatelessWidget {
                 logoSize: 200,
                 mainText: " Enter OTP",
                 subText:
-                    "please enter the OTP that you \n have recieved on your Email",
+                "please enter the OTP that you \n have recieved on your Email",
               ),
               const SizedBox(
                 height: 30,
               ),
               AuthTextField(
+                  email: otp,
                   icon: Icons.alternate_email,
                   keyboardType: TextInputType.emailAddress,
                   labelText: "Enter OTP",
@@ -51,16 +57,20 @@ class OTP extends StatelessWidget {
                   fontSize: 20.sp,
                   iconsize: 12.sp,
                   labelSize: 12.sp),
-                  const SizedBox(
+              const SizedBox(
                 height: 30,
               ),
-                Hero(
+              Hero(
                 tag: "Auth",
                 child: RoundedLoadingButton(
                   controller: _forgetpasswordbtnController,
                   onPressed: () {
                     Timer(Duration(seconds: 3), () {
                       _forgetpasswordbtnController.success();
+                      print("before setting" + otp.toString());
+                      authProvider.setOtp(otp.text.toString());
+                      authProvider.otpUser(context);
+
                       Navigator.push(
                           context,
                           PageTransition(
@@ -81,10 +91,10 @@ class OTP extends StatelessWidget {
                 ),
               ),
             ],
-            
-            
+
+
           ),
-          
+
         ),
       ),
     );

@@ -2,18 +2,22 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:provider/provider.dart';
 import 'package:rounded_loading_button_plus/rounded_loading_button.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
+import 'package:sulaman_s_application007/Providers/AuthProvider.dart';
 import 'package:sulaman_s_application007/Views/Auth/otp.dart';
 import 'package:sulaman_s_application007/Views/Widgets/Auth/auth_heading.dart';
 import '../Widgets/Auth/auth_text_field.dart';
 
 class logIn extends StatelessWidget {
   final RoundedLoadingButtonController _loginbtnController =
-      RoundedLoadingButtonController();
+  RoundedLoadingButtonController();
+  final TextEditingController email = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<AuthService>(context,listen: false);
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -39,6 +43,7 @@ class logIn extends StatelessWidget {
                 height: 50,
               ),
               AuthTextField(
+                  email: email,
                   icon: Icons.alternate_email,
                   keyboardType: TextInputType.emailAddress,
                   labelText: "abc@gmail.com",
@@ -47,33 +52,37 @@ class logIn extends StatelessWidget {
                   iconsize: 16,
                   labelSize: 16.sp),
               const SizedBox(height: 15),
-              Hero(
-                tag: "Auth",
-                child: RoundedLoadingButton(
-                  controller: _loginbtnController,
-                  onPressed: () {
-                    Timer(Duration(seconds: 3), () {
-                      _loginbtnController.success();
-                      Navigator.push(
-                          context,
-                          PageTransition(
-                              type: PageTransitionType.fade,
-                              child: OTP()));
-                    });
-                  },
-                  child: Text(
-                    "Login",
-                    style: GoogleFonts.poppins(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white),
+              Container(
+                child: Hero(
+                  tag: "Auth",
+                  child: RoundedLoadingButton(
+                    controller: _loginbtnController,
+                    onPressed: () {
+                      Timer(Duration(seconds: 3), () {
+                        authProvider.setEmail(email.text.toString());
+                        authProvider.login(context);
+                        _loginbtnController.success();
+                        Navigator.push(
+                            context,
+                            PageTransition(
+                                type: PageTransitionType.fade,
+                                child: OTP()));
+                      });
+                    },
+                    child: Text(
+                      "Login",
+                      style: GoogleFonts.poppins(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),
+                    ),
+                    color: Colors.indigo[900],
+                    width: 2000.w,
+                    borderRadius: 10,
                   ),
-                  color: Colors.indigo[900],
-                  width: 2000.w,
-                  borderRadius: 10,
                 ),
               ),
-              
+
             ],
           ),
         ),
