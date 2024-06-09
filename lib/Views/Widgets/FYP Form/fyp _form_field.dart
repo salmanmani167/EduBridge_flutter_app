@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -7,17 +8,20 @@ class FypFormField extends StatelessWidget {
   final String PlaceholderText;
   final double PlaceholderTextSize;
   final double fontSize;
-  FypFormField(
+  final TextEditingController? feild;
+   FypFormField(
       {required this.keyboardType,
       required this.PlaceholderText,
       required this.obscureText,
       required this.fontSize,
-      required this.PlaceholderTextSize});
+      required this.PlaceholderTextSize,
+         this.feild,});
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20.0),
       child: TextField(
+        controller: this.feild,
           textAlign: TextAlign.left,
           textInputAction: TextInputAction.none,
           obscureText: obscureText,

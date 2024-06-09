@@ -6,23 +6,32 @@ import 'package:provider/provider.dart';
 import 'package:rounded_loading_button_plus/rounded_loading_button.dart';
 import 'package:flutter_sizer/flutter_sizer.dart';
 import 'package:sulaman_s_application007/Providers/AuthProvider.dart';
-import 'package:sulaman_s_application007/Views/Auth/otp.dart';
+import 'package:sulaman_s_application007/Views/Auth/Register.dart'; // Import the Register screen
 import 'package:sulaman_s_application007/Views/Widgets/Auth/auth_heading.dart';
-import '../Widgets/Auth/auth_text_field.dart';
+import 'package:sulaman_s_application007/Views/Widgets/Auth/auth_text_field.dart';
+import 'package:sulaman_s_application007/Views/Auth/otp.dart';
 
-class logIn extends StatelessWidget {
+class logIn extends StatefulWidget {
+  @override
+  State<logIn> createState() => _logInState();
+}
+
+class _logInState extends State<logIn> {
   final RoundedLoadingButtonController _loginbtnController =
   RoundedLoadingButtonController();
+  bool _isloading= false;
+
   final TextEditingController email = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    final authProvider = Provider.of<AuthService>(context,listen: false);
+    final authProvider = Provider.of<AuthService>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
         title: Text(
           "Edu Bridge",
-          style: GoogleFonts.poppins(fontWeight: FontWeight.bold,color:Colors.white),
+          style: GoogleFonts.poppins(
+              fontWeight: FontWeight.bold, color: Colors.white),
         ),
         backgroundColor: Colors.indigo[900],
         centerTitle: true,
@@ -32,7 +41,7 @@ class logIn extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 30),
           child: Column(
             children: [
-              new AuthHeading(
+              AuthHeading(
                 mainText: "Sign in to Edu Bridge",
                 subText: "your own FYP partner",
                 logo: "assets/images/edulogo.png",
@@ -55,18 +64,35 @@ class logIn extends StatelessWidget {
               Container(
                 child: Hero(
                   tag: "Auth",
-                  child: RoundedLoadingButton(
-                    controller: _loginbtnController,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.indigo[900],
+
+                      // width: 2000.w,
+                      // borderRadius: 10,
+                    ),
+
                     onPressed: () {
-                      Timer(Duration(seconds: 3), () {
+                      Timer(Duration(seconds: 3), () async {
                         authProvider.setEmail(email.text.toString());
-                        authProvider.login(context);
-                        _loginbtnController.success();
-                        Navigator.push(
-                            context,
-                            PageTransition(
-                                type: PageTransitionType.fade,
-                                child: OTP()));
+                        if(await authProvider.login(context))
+                        {
+                          setState(() {
+                            _isloading = true;
+                          });
+                          _loginbtnController.success();
+                          _isloading?Navigator.push(
+                              context,
+                              PageTransition(
+                                  type: PageTransitionType.fade,
+                                  child: OTP())):CircularProgressIndicator();
+
+                        }
+                        else{    ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text('login details are not correct. Please try again.')),
+                        );
+                        }
+
                       });
                     },
                     child: Text(
@@ -76,13 +102,29 @@ class logIn extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                           color: Colors.white),
                     ),
-                    color: Colors.indigo[900],
-                    width: 2000.w,
-                    borderRadius: 10,
+
                   ),
                 ),
               ),
-
+              const SizedBox(height: 15),
+              TextButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    PageTransition(
+                      type: PageTransitionType.fade,
+                      child: Register(), // Navigate to the Register screen
+                    ),
+                  );
+                },
+                child: Text(
+                  "Don't have an account? Register",
+                  style: GoogleFonts.poppins(
+                    fontSize: 14,
+                    color: Colors.indigo[900],
+                  ),
+                ),
+              ),
             ],
           ),
         ),

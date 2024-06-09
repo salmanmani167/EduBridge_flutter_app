@@ -5,14 +5,47 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'package:sulaman_s_application007/Providers/Industries_Ideas.dart';
 import 'package:sulaman_s_application007/Views/Widgets/Dashboard/dashboard_gradient_feature.dart';
 
-class DashBoard extends StatelessWidget {
+import '../../Components/dashboardComponent.dart';
+import '../../Models/AllIndustriesModel.dart';
+import '../../Providers/Student_Provider.dart';
 
+// class DashBoard extends StatelessWidget {
+//
+//
+//   @override
+//   Widget build(BuildContext context) {
+//
+//
+//   }
+// }
+class DashBoard extends StatefulWidget {
+  const DashBoard({super.key});
 
   @override
+  State<DashBoard> createState() => _DashBoardState();
+}
+
+class _DashBoardState extends State<DashBoard> {
+  @override
+  void initState() {
+    // final dashboardProvider = Provider.of<IndustriesService>(context,listen: false);
+    // dashboardProvider.industries(context);
+    Provider.of<StudentService>(context, listen: false).fetchStudent();
+    // TODO: implement initState
+    super.initState();
+  }
+  @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    List<AllIndustries> allindustries = [];
+    final dashboardProvider = Provider.of<IndustriesService>(context,listen: false);
+    dashboardProvider.fetchIndustries();
+     final Future<List<AllIndustries>> myFuture = dashboardProvider.fetchIndustries();
+
+    return  SingleChildScrollView(
       child: Column(
         children: [
           const SizedBox(
@@ -20,7 +53,7 @@ class DashBoard extends StatelessWidget {
           ),
           Container(
             alignment: Alignment.center,
-            child: 
+            child:
             Text(
               "Dashboard",
               style: GoogleFonts.nunito(
@@ -35,183 +68,28 @@ class DashBoard extends StatelessWidget {
           Container(
             padding: EdgeInsets.all(25),
             width: double.infinity,
-            child: Card(
-              elevation: 10,
-              color: Colors.grey[200],
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(30),
-              ),
-              child: Container(
-                decoration:
-                    BoxDecoration(borderRadius: BorderRadius.circular(40)),
-                child: Column(
-                  children: [
-                    Row(
-                      children: [
-                        Container(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 25, vertical: 25),
-                          child: CircularProfileAvatar(
-                            "",
-                            backgroundColor: Colors.yellow,
-                            borderWidth: 1,
-                            borderColor: Colors.black,
-                            elevation: 20,
-                            radius: 40,
-                            cacheImage: true,
-                            errorWidget: (context, url, error) {
-                              return const Icon(
-                                Icons.face,
-                                size: 50,
-                              );
-                            },
-                            onTap: () {},
-                            animateFromOldImageOnUrlChange: true,
-                            placeHolder: (context, url) {
-                              return Container(
-                                  child: const Center(
-                                child: CircularProgressIndicator(),
-                              ));
-                            },
-                          ),
-                        ),
-                        Flexible(
-                            child: Padding(
-                          padding: const EdgeInsets.only(right: 30.0),
-                          child: Column(
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Icon(
-                                    Icons.fiber_manual_record,
-                                    color: Colors.black,
-                                    size: 15,
-                                  ),
-                                  SizedBox(
-                                    width: 14,
-                                  ),
-                                  Text(
-                                    "Sulaman Hassan",
-                                    style: GoogleFonts.poppins(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w800),
-                                  )
-                                ],
-                              ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Icon(
-                                    Icons.location_on_sharp,
-                                    color: Colors.black,
-                                    size: 15,
-                                  ),
-                                  SizedBox(
-                                    width: 14,
-                                  ),
-                                  Expanded(
-                                    child: Text(
-                                      "ABC Road, main bullevard, near hardess, Faisalabad",
-                                      style: GoogleFonts.poppins(
-                                          fontSize: 10,
-                                          fontWeight: FontWeight.normal),
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ],
-                          ),
-                        ))
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                          child: Flexible(
-                              child: Column(
-                            children: [
-                              Text(
-                                "Status",
-                                style: GoogleFonts.nunito(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w500,
-                                    color: Colors.black),
-                              ),
-                              Text(
-                                "Online",
-                                style: GoogleFonts.nunito(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.green[500]),
-                              ),
-                            ],
-                          )),
-                        ),
-                        SizedBox(
-                          height: 30,
-                          width: 2,
-                          child: Container(
-                            color: Colors.grey,
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 20.0),
-                          child: Flexible(
-                              child: Column(
-                            children: [
-                              Text(
-                                "User Status",
-                                style: GoogleFonts.nunito(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w500,
-                                    color: Colors.black),
-                              ),
-                              Text(
-                                "N/A",
-                                style: GoogleFonts.nunito(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.red[500]),
-                              ),
-                            ],
-                          )),
-                        ),
-                        SizedBox(
-                          height: 30,
-                          width: 2,
-                          child: Container(
-                            color: Colors.grey,
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                          child: Flexible(
-                            child: Text(
-                              "Mood N/A",
-                              style: GoogleFonts.nunito(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.black),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                  ],
-                ),
-              ),
+            child: FutureBuilder(
+              future: myFuture,
+                builder: (context,AsyncSnapshot<List<AllIndustries>>
+                    snapshot){
+                  if (!snapshot.hasData) {
+                    return const Center(
+                        child: CircularProgressIndicator());
+                  } else if (snapshot.hasData &&
+                      snapshot.data!.isEmpty) {
+                    return const Center(
+                        child: Text(
+                          'No Data found',
+                          style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.white),
+                        ));
+                  }
+                  else{
+                    return DashboardComponent(allindustries: snapshot.data!,);
+
+                  }
+                },
             ),
           ),
           SizedBox(height: 20,)

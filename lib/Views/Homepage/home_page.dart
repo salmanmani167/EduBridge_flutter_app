@@ -13,6 +13,8 @@ import 'package:sulaman_s_application007/Views/Form/fyp_form.dart';
 import 'package:sulaman_s_application007/Views/Homepage/chat_page.dart';
 import 'package:sulaman_s_application007/Views/Widgets/Homepage/drawer_list_tile.dart';
 
+import '../Chat/Homepage.dart';
+
 class HomePage extends StatefulWidget {
   @override
   State<HomePage> createState() => _HomePageState();
@@ -26,7 +28,8 @@ class _HomePageState extends State<HomePage> {
   List<IconData> iconslist = [
     FontAwesomeIcons.circleUser,
     FontAwesomeIcons.windows,
-    FontAwesomeIcons.moneyBill
+    FontAwesomeIcons.moneyBill,
+    FontAwesomeIcons.message
   ];
 
   int page = 1;
@@ -48,6 +51,7 @@ class _HomePageState extends State<HomePage> {
        FypForm(),
         DashBoard(),
        FundingForm(),
+        GemeniPage(),
       ],
     );
   }
@@ -85,7 +89,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      
+
       bottomNavigationBar: AnimatedBottomNavigationBar(
         backgroundColor: Colors.grey[300],
         icons: iconslist,

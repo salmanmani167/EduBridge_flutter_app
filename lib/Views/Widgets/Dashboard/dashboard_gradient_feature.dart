@@ -5,7 +5,7 @@ class DashboardGradientFeature extends StatelessWidget {
   final String Iconimage;
   final String buttontext;
   final List<Color> clr;
-  final FontWeight? weight; 
+  final FontWeight? weight;
   DashboardGradientFeature(
       {required this.Iconimage, required this.buttontext, required this.clr,this.weight});
   @override
@@ -51,7 +51,8 @@ class DashboardGradientFeature extends StatelessWidget {
                 ],
               ),
             ),
-          )),
+          )
+      ),
     );
   }
 }

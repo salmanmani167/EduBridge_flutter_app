@@ -1,11 +1,15 @@
 import "dart:async";
+import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
 import "package:flutter/widgets.dart";
 import "package:flutter_sizer/flutter_sizer.dart";
 import "package:google_fonts/google_fonts.dart";
 import 'package:getwidget/getwidget.dart';
 import "package:page_transition/page_transition.dart";
+import "package:provider/provider.dart";
 import "package:rounded_loading_button_plus/rounded_loading_button.dart";
+import "package:sulaman_s_application007/Providers/Funding_Provider.dart";
+import "package:sulaman_s_application007/Providers/Student_Provider.dart";
 import "package:sulaman_s_application007/Views/Form/fyp_form.dart";
 import "package:sulaman_s_application007/Views/Homepage/home_page.dart";
 import "package:sulaman_s_application007/Views/Widgets/FYP%20Form/drop_down.dart";
@@ -13,12 +17,25 @@ import "package:sulaman_s_application007/Views/Widgets/FYP%20Form/fyp%20_form_fi
 import "package:sulaman_s_application007/Views/Widgets/FYP%20Form/form_heading.dart";
 import "package:sulaman_s_application007/Views/Widgets/FYP%20Form/form_sub_heading.dart";
 
+import "../../Models/StudentModel.dart";
+import "../../Models/SupervisorModel.dart";
+import "../../Providers/Supervisor_Provider.dart";
+
 class FundingForm extends StatefulWidget {
   @override
   State<FundingForm> createState() => _FypFundingFormState();
 }
 
 class _FypFundingFormState extends State<FundingForm> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    Provider.of<StudentService>(context, listen: false).fetchStudent();
+    super.initState();
+  }
+  TextEditingController amountController = TextEditingController();
+  Supervisor? selectedSupervisor;
+  Student? selectedStudent;
   final RoundedLoadingButtonController _SaveProfilebtnController =
       RoundedLoadingButtonController();
   String _SelectedSupervisor = '';
@@ -90,20 +107,50 @@ class _FypFundingFormState extends State<FundingForm> {
                             FormHeading(heading: "Supervisor Details"),
 
                             FormSubHeading(subheading: "Name"),
-                            ReusableDropDown(
-                              items: [
-                                "Dr. Usman Aftab",
-                                "Dr. Usman Mughal",
-                                "Dr Ali"
-                              ],
-                              value: _SelectedSupervisor,
-                              onChanged: (newValue) {
-                                setState(() {
-                                  _SelectedSupervisor =
-                                      newValue!; // Update the selected option
-                                });
+                            Consumer<SupervisorService>(
+                              builder: (context, supervisorService, child) {
+                                if (supervisorService.supervisors.isEmpty) {
+                                  return CircularProgressIndicator();
+                                } else {
+                                  return ReusableDropDownSupervisor(
+                                    hint: 'Select Supervisor',
+                                    items: supervisorService.supervisors,
+                                    value: selectedSupervisor,
+                                    onChanged: (Supervisor? newValue) {
+                                      setState(() {
+                                        selectedSupervisor = newValue;
+                                      });
+                                      // Access the selected supervisor's id
+                                      if (newValue != null) {
+                                        final FundingProvider = Provider.of<FundingService>(context,listen: false);
+                                        FundingProvider.setSupervisorId(newValue.id.toString());
+                                        // final FypProvider = Provider.of<FypService>(context,listen: false);
+                                        //
+                                        print('Selected supervisor id: ${newValue.id}');
+                                        // _selectedSupervisor=newValue.id.toString();
+                                        // SuperVisorProvider.setSupervsor(newValue.id);
+                                        // FypProvider.setFypSupervisor(newValue.id);
+                                      }
+
+                                    },
+                                  );
+                                }
                               },
                             ),
+                            // ReusableDropDown(
+                            //   items: [
+                            //     "Dr. Usman Aftab",
+                            //     "Dr. Usman Mughal",
+                            //     "Dr Ali"
+                            //   ],
+                            //   value: _SelectedSupervisor,
+                            //   onChanged: (newValue) {
+                            //     setState(() {
+                            //       _SelectedSupervisor =
+                            //           newValue!; // Update the selected option
+                            //     });
+                            //   },
+                            // ),
                             FormSubHeading(
                               subheading: "Email Address",
                             ),
@@ -167,21 +214,54 @@ class _FypFundingFormState extends State<FundingForm> {
                             FormHeading(heading: "Project Team Lead"),
 
                             FormSubHeading(subheading: "Student Name"),
-                            ReusableDropDown(
-                              items: [
-                                "Muhammad Ali",
-                                "Arsal",
-                                "Muhammad Awais",
-                                "Muhammad Sulaman"
-                              ],
-                              value: _SelectedStudent,
-                              onChanged: (newValue) {
-                                setState(() {
-                                  _SelectedStudent =
-                                      newValue!; // Update the selected option
-                                });
+                            Consumer<StudentService>(
+                              builder: (context, studentService, child) {
+                                print("Student data:${studentService.students}");
+                                if (studentService.students.isEmpty) {
+                                  Provider.of<StudentService>(context, listen: false).fetchStudent();
+                                  return CircularProgressIndicator();
+                                } else {
+                                  return ReusableDropDownStudent(
+                                    hint: 'Select Student',
+                                    items: studentService.students,
+                                    value: selectedStudent,
+                                    onChanged: (Student? newValue) {setState(() {
+                                        selectedStudent = newValue;
+                                      });
+                                      // Access the selected supervisor's id
+                                      if (newValue != null) {
+                                        var full_name = newValue!.firstName + " "+newValue!.lastName;
+                                        // final SuperVisorProvider = Provider.of<SupervisorService>(context,listen: false);
+                                        final FundingProvider = Provider.of<FundingService>(context,listen: false);
+                                        FundingProvider.setStudentName(full_name.toString());
+                                        FundingProvider.setStudentId(newValue.id.toString());
+                                        //
+                                        print('Selected student id: ${newValue.id}');
+                                        // _selectedSupervisor=newValue.id.toString();
+                                        // SuperVisorProvider.setSupervsor(newValue.id);
+                                        // FypProvider.setFypSupervisor(newValue.id);
+                                      }
+
+                                    },
+                                  );
+                                }
                               },
                             ),
+                            // ReusableDropDown(
+                            //   items: [
+                            //     "Muhammad Ali",
+                            //     "Arsal",
+                            //     "Muhammad Awais",
+                            //     "Muhammad Sulaman"
+                            //   ],
+                            //   value: _SelectedStudent,
+                            //   onChanged: (newValue) {
+                            //     setState(() {
+                            //       _SelectedStudent =
+                            //           newValue!; // Update the selected option
+                            //     });
+                            //   },
+                            // ),
                             FormSubHeading(subheading: "Father Name"),
                             FypFormField(
                               keyboardType: TextInputType.name,
@@ -207,6 +287,16 @@ class _FypFundingFormState extends State<FundingForm> {
                                 keyboardType: TextInputType.none,
                                 PlaceholderText:
                                     "Pleas enter you Student ID/Roll Number",
+                                obscureText: false,
+                                fontSize: 12,
+                                PlaceholderTextSize: 12),
+                            FormSubHeading(
+                              subheading: "Amount",
+                            ),
+                            FypFormField(
+                              feild: amountController,
+                                keyboardType: TextInputType.number,
+                                PlaceholderText: "Enter Amount",
                                 obscureText: false,
                                 fontSize: 12,
                                 PlaceholderTextSize: 12),
@@ -259,6 +349,8 @@ class _FypFundingFormState extends State<FundingForm> {
                                 child: RoundedLoadingButton(
                                   controller: _SaveProfilebtnController,
                                   onPressed: () {
+                                    final FundingProvider = Provider.of<FundingService>(context,listen: false);
+                                    FundingProvider.setAmount(amountController.text.toString());
                                     Timer(Duration(seconds: 3), () {
                                       _SaveProfilebtnController.success();
                                       Navigator.push(
@@ -267,6 +359,7 @@ class _FypFundingFormState extends State<FundingForm> {
                                               type: PageTransitionType.fade,
                                               child: HomePage()));
                                     });
+                                    FundingProvider.FundingCredentials(context);
                                   },
                                   child: Text(
                                     "Save Form",

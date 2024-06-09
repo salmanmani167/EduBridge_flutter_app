@@ -1,5 +1,5 @@
 name: sulaman_s_application007
-description: A new Flutter project.
+description: A new FYP Portal For LGU.
 version: 1.0.0+1
 environment:
   sdk: '>=2.17.0 <3.0.0'
@@ -64,4 +64,3 @@ flutter:
     - assets/dashboard/diary.png
     - assets/dashboard/sos.png
     - assets/dashboard/activity.png
-  
